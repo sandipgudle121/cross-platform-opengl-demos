@@ -1,0 +1,56 @@
+"# directx11-graphics-showcase
+
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vs/
+.idea/
+*.suo
+*.user
+
+# Build output
+[Bb]uild/
+[Bb]in/
+[Oo]bj/
+out/
+dist/
+coverage/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Compiled binaries and intermediate files
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+*.a
+*.lib
+*.res
+*.pdb
+*.ilk
+*.pch
+*.gch
+*.class
+*.log
+
+# Android
+.gradle/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# Web
+node_modules/
+
+# Apple platforms
+DerivedData/
+xcuserdata/
+*.xcuserstate
