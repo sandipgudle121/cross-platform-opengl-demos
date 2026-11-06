@@ -1,0 +1,7 @@
+#Mon May 27 13:51:17 IST 2024
+base.0=C\:\\Users\\sandi\\rtr05-196\\01-OpenGL\\02-PP\\03-Android\\02-OpenGL-ES\\03-PerspectiveTriangle\\02-ColoredTriangle\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+base.1=C\:\\Users\\sandi\\rtr05-196\\01-OpenGL\\02-PP\\03-Android\\02-OpenGL-ES\\03-PerspectiveTriangle\\02-ColoredTriangle\\app\\build\\intermediates\\global_synthetics_dex\\release\\mergeReleaseGlobalSynthetics\\classes.dex
+path.0=classes.dex
+path.1=classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex

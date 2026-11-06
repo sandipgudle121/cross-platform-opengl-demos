@@ -1,0 +1,105 @@
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\gradle\libs.versions.toml:2: Warning: A newer version of com.android.application than 8.3.2 is available: 8.4.1 [AndroidGradlePluginVersion]
+agp = "8.3.2"
+      ~~~~~~~
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\gradle\libs.versions.toml:2: Warning: A newer version of com.android.application than 8.3.2 is available: 8.4.1 [AndroidGradlePluginVersion]
+agp = "8.3.2"
+      ~~~~~~~
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\gradle\libs.versions.toml:2: Warning: A newer version of com.android.application than 8.3.2 is available: 8.4.1 [AndroidGradlePluginVersion]
+agp = "8.3.2"
+      ~~~~~~~
+
+   Explanation for issues of type "AndroidGradlePluginVersion":
+   This detector looks for usage of the Android Gradle Plugin where the
+   version you are using is not the current stable release. Using older
+   versions is fine, and there are cases where you deliberately want to stick
+   with an older version. However, you may simply not be aware that a more
+   recent version is available, and that is what this lint check helps find.
+
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\gradle\libs.versions.toml:7: Warning: A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0 [GradleDependency]
+material = "1.10.0"
+           ~~~~~~~~
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\gradle\libs.versions.toml:7: Warning: A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0 [GradleDependency]
+material = "1.10.0"
+           ~~~~~~~~
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\gradle\libs.versions.toml:7: Warning: A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0 [GradleDependency]
+material = "1.10.0"
+           ~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml:2: Warning: The resource R.mipmap.ic_launcher appears to be unused [UnusedResources]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\drawable\ic_launcher_background.xml:2: Warning: The resource R.drawable.ic_launcher_background appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\drawable-v24\ic_launcher_foreground.xml:1: Warning: The resource R.drawable.ic_launcher_foreground appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml:2: Warning: The resource R.mipmap.ic_launcher_round appears to be unused [UnusedResources]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-hdpi\jolly_roger.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-mdpi\jolly_roger.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-xhdpi\jolly_roger.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-xxhdpi\jolly_roger.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-xxxhdpi\jolly_roger.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+
+   Explanation for issues of type "IconLauncherShape":
+   According to the Android Design Guide
+   (https://d.android.com/r/studio-ui/designer/material/iconography) your
+   launcher icons should "use a distinct silhouette", a "three-dimensional,
+   front view, with a slight perspective as if viewed from above, so that
+   users perceive some depth."
+
+   The unique silhouette implies that your launcher icon should not be a
+   filled square.
+
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-xxxhdpi\jolly_roger.png: Warning: The image jolly_roger.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpi/jolly_roger.png: 48x48 dp (72x72 px), mipmap-mdpi/jolly_roger.png: 72x72 dp (72x72 px), mipmap-xhdpi/jolly_roger.png: 36x36 dp (72x72 px), mipmap-xxhdpi/jolly_roger.png: 24x24 dp (72x72 px), mipmap-xxxhdpi/jolly_roger.png: 18x18 dp (72x72 px) [IconDipSize]
+
+   Explanation for issues of type "IconDipSize":
+   Checks the all icons which are provided in multiple densities, all compute
+   to roughly the same density-independent pixel (dip) size. This catches
+   errors where images are either placed in the wrong folder, or icons are
+   changed to new sizes but some folders are forgotten.
+
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\res\mipmap-xxxhdpi\jolly_roger.png: Warning: The jolly_roger.png icon has identical contents in the following configuration folders: mipmap-hdpi, mipmap-mdpi, mipmap-xhdpi, mipmap-xxhdpi, mipmap-xxxhdpi [IconDuplicatesConfig]
+
+   Explanation for issues of type "IconDuplicatesConfig":
+   If an icon is provided under different configuration parameters such as
+   drawable-hdpi or -v11, they should typically be different. This detector
+   catches cases where the same icon is provided in different configuration
+   folder which is usually not intentional.
+
+C:\Users\sandi\rtr05-196\01-OpenGL\02-PP\03-Android\02-OpenGL-ES\03-PerspectiveTriangle\02-ColoredTriangle\app\src\main\java\com\ssg\perspective\PerspectiveView.java:74: Warning: Custom view PerspectiveView overrides onTouchEvent but not performClick [ClickableViewAccessibility]
+    public boolean onTouchEvent(MotionEvent e)
+                   ~~~~~~~~~~~~
+
+   Explanation for issues of type "ClickableViewAccessibility":
+   If a View that overrides onTouchEvent or uses an OnTouchListener does not
+   also implement performClick and call it when clicks are detected, the View
+   may not handle accessibility actions properly. Logic handling the click
+   actions should ideally be placed in View#performClick as some accessibility
+   services invoke performClick when a click action should occur.
+
+0 errors, 18 warnings

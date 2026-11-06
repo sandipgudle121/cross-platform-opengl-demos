@@ -1,0 +1,239 @@
+Step 1: Create NSString based image file name.
+Step 2: Create NSImageObject.
+Step 3: Create CGImageObject from above NSImageObject.
+Step 4: Get Width and Height of image using above CGImage.
+Step 5: Get CGDataProviderRef from above CGImage.
+Step 6: Get CFDataRect from above CGDataProviderRef.
+Step 7: Get void* format of image data for image data from above CFDataRef.
+Step 8: Use usual OpenGL functions to create texture like... glGenTextures(), glBindTexture(), glPixelStorei(), glTexParameteri(), glTexImage2D(), glGenerateMimmap().
+Step 9: Call CFRelease() to release the Data ref object that we created in 6th step. 
+
+
+// Implementation of custom view interface
+@implementation GLView
+{
+    CVDisplayLinkRef displayLink;
+
+    uint shaderProgramObject;
+    uint vao; 
+    uint vbo_position;
+    GLuint smiley_texture;
+
+    uint mvpMatrixUniform;
+    mat4 perspectiveProjectionMatrix;
+}  
+
+
+// Texture Function
+-(GLuint)loadGLTexture:(const char*)szImageFileName
+{
+    // Code
+    // Step 1: Create NSString based image file name.
+    NSBundle *appBundle = [NSBundle mainBundle];
+    NSString *appDirPath = [appBundle bundlePath];
+    NSString *parentDirPath = [appDirPath stringByDeletingLastPathComponent];
+    NSString *imageFileNameWithPath = [NSString stringWithFormat:@"%@/%s",parentDirPath,szImageFileName];
+
+    // Step 2: Create NSImageObject.
+    NSImage *image = [[NSImage alloc]initWithContentsOfFile:imageFileNameWithPath];
+    if(image == nil)
+    {
+        fprintf_s(gpFile,"Create NSImageObject Failed\n");
+        [self uninitialize];
+        [self release];
+        [NSApp terminate:self];
+    }
+
+    // Step 3: Create CGImageObject from above NSImageObject.
+    CGImage cgImage = [image CGImageForProposedRect:nil context:nil Hints:nil];
+
+    // Step 4: Get Width and Height of image using above CGImage.
+    int imageWidth = (int)CGImageGetWidth(cgImage);
+    int imageHeight = (int)CGImageGetHeight(cgImage); 
+    
+    // Step 5: Get CGDataProviderRef from above CGImage.
+    CGDataProviderRef imageDataProviderRef = CGImageGetDataProvider();
+
+    // Step 6: Get CFDataRect from above CGDataProviderRef.
+    CFDataRef imageDataRef = CGDataProviderCopyData(imageDataProviderRef);
+
+    // Step 7: Get void* format of image data for image data from above CFDataRef.
+    void* imageData CFDataRef = CFDataGetBytePtr(imageDataRef);
+
+    // Step 8: Use usual OpenGL functions to create texture like... glGenTextures(), glBindTexture(), glPixelStorei(), glTexParameteri(), glTexImage2D(), glGenerateMimmap().
+    GLuint texture;
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glPixelStorei(GL_UNPACK_ALIGNMENT,1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imageWidth, imageHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    // Step 9: Call CFRelease() to release the Data ref object that we created in 6th step.
+    CFRelease(imageDataRef);
+
+    return(texture);
+}
+
+-(int)initialize
+{
+    // Code
+    [self printGLInfo];
+
+    const GLchar* vertexShaderSourceCode =
+    "   #version 410 core                               \n" \
+    "   in vec4 aPosition;                              \n" \
+    "   uniform mat4 uMVPMatrix;                        \n" \
+    "   void main(void)                                 \n" \
+    "   {                                               \n" \
+    "       gl_Position=uMVPMatrix * aPosition;         \n" \
+    "   }                                               \n";
+
+    GLuint vertexShaderObject = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShaderObject, 1, (const GLchar**)&vertexShaderSourceCode, NULL);
+    glCompileShader(vertexShaderObject);
+
+    GLint status = NULL;
+    GLint infoLoglength = NULL;
+    char *szInfoLog = NULL;
+
+    glGetShaderiv(vertexShaderObject, GL_COMPILE_STATUS, &status);
+    if(status == GL_FALSE )
+    {
+        glGetShaderiv(vertexShaderObject, GL_INFO_LOG_LENGTH, &infoLoglength);
+        if(infoLoglength > 0)
+        {
+
+            szInfoLog = (GLchar*)malloc(infoLoglength);
+            if(szInfoLog != NULL)
+            {
+                glGetShaderInfoLog(vertexShaderObject, infoLoglength, NULL, szInfoLog);
+                fprintf_s(gpFile,"Vertex shader complilation : %s \n",szInfoLog);
+                free(szInfoLog);
+                szInfoLog = NULL;
+                
+            }
+        }
+        [self uninitialize];
+        [self release];
+        [NSApp terminate:self];
+    }
+
+    /* Fragment Shader */
+    const GLchar* fragmentShaderSourceCode =
+    "   #version 410 core                                      \n" \
+    "   out vec4 FragColor;                                    \n" \
+    "   void main(void)                                        \n" \
+    "   {                                                      \n" \
+    "       FragColor = vec4(1.0,1.0,1.0,1.0);                 \n" \
+    "   }                                                      \n";
+    
+    GLuint fragmentShaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShaderObject,1, (const GLchar**)&fragmentShaderSourceCode, NULL);
+    glCompileShader(fragmentShaderObject);
+
+    status = 0;
+    infoLoglength = 0;
+    szInfoLog = 0;
+
+    glGetShaderiv(fragmentShaderObject, GL_COMPILE_STATUS, &status);
+    if(status == GL_FALSE)
+    {
+        glGetShaderiv(fragmentShaderObject, GL_INFO_LOG_LENGTH, &infoLoglength);
+        if(infoLoglength > 0)
+        {
+            szInfoLog  = (GLchar*)malloc(infoLoglength);
+            if(szInfoLog != NULL)
+            {
+                glGetShaderInfoLog(fragmentShaderObject, infoLoglength, NULL, szInfoLog);
+                fprintf_s(gpFile,"fragment shader compilation : %s \n", szInfoLog);
+                free(szInfoLog);
+                szInfoLog = NULL;
+                
+            }
+        }
+        [self uninitialize];
+        [self release];
+        [NSApp terminate:self];
+    }
+
+    /* Shader Program */
+    shaderProgramObject = glCreateProgram();
+    glAttachShader(shaderProgramObject, vertexShaderObject);
+    glAttachShader(shaderProgramObject, fragmentShaderObject);
+    glBindAttribLocation(shaderProgramObject, SSG_ATTRIBUTE_POSITION, "aPosition");
+    glLinkProgram(shaderProgramObject);
+
+    status = 0;
+    infoLoglength = 0;
+    szInfoLog = 0;
+
+    glGetProgramiv(shaderProgramObject, GL_LINK_STATUS, &status);
+    if(status == GL_FALSE)
+    {
+        glGetProgramiv( shaderProgramObject, GL_INFO_LOG_LENGTH, &infoLoglength);
+        if(infoLoglength > 0)
+        {
+            szInfoLog = (GLchar*)malloc(infoLoglength);
+            if(szInfoLog != NULL)
+            {
+                glGetProgramInfoLog(shaderProgramObject, infoLoglength, NULL,szInfoLog);
+                fprintf_s(gpFile,"shader program linking error log : %s \n",szInfoLog);
+                free(szInfoLog);
+                szInfoLog = NULL;
+            }
+        }
+        [self uninitialize];
+        [self release];
+        [NSApp terminate:self];
+    }
+
+    /* Get Shader Uniform Locations */
+    mvpMatrixUniform = glGetUniformLocation(shaderProgramObject, "uMVPMatrix");
+
+    const GLfloat triangle_position[] = 
+    {
+        0.0f,1.0f,0.0f,
+        -1.0f,-1.0f,0.0f,
+        1.0f,-1.0f,0.0f
+    };
+    
+    // VAO (Vertex Array Object ) 
+    glGenVertexArrays(1,&vao);
+    glBindVertexArray(vao);
+
+    // VBO for Position
+    glGenBuffers(1, &vbo_position);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_position);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(triangle_position), triangle_position, GL_STATIC_DRAW);
+    glVertexAttribPointer(SSG_ATTRIBUTE_POSITION, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+    glEnableVertexAttribArray(SSG_ATTRIBUTE_POSITION);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+
+    // Set Depth
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+
+    // Set ClearColor
+    glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
+
+    // Create Texture
+    smiley_texture = [self loadGLTexture: "smiley.bmp"];
+    if(smiley_texture == nil)
+    {
+        fprintf_s(gpFile,"Failed to Smiley Texture\n");
+        return(-1);
+    }
+
+    // Initialize Perspective Projection Matrix
+    perspectiveProjectionMatrix = vmath::mat4::identity();
+
+    [self resize:WIN_WIDTH :WIN_HEIGHT];
+
+    return(0);
+} 

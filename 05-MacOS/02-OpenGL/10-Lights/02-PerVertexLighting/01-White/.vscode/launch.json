@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/sandi/RTR-196/rtr05-196/01-OpenGL/02-PP/05-MacOS/02-OpenGL/09-WhiteSphere",
+      "program": "c:/Users/sandi/RTR-196/rtr05-196/01-OpenGL/02-PP/05-MacOS/02-OpenGL/09-WhiteSphere/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

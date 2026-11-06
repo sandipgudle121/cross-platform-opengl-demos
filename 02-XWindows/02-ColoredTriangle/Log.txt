@@ -1,0 +1,6 @@
+Log file created successfuly
+10 matching FBConfig found
+The choosen visuals id is = 0x76
+Core profile glxContext obtained successfuly
+Suppporting direct rendering or hardware rendering
+Program Ended Successfully

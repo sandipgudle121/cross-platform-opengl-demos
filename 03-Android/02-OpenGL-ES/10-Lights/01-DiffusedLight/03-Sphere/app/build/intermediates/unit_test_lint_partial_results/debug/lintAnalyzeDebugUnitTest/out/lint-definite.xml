@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.3.2" type="incidents">
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="1.2.1"/>
+        <location
+            file="$HOME/rtr05-196/01-OpenGL/02-PP/03-Android/02-OpenGL-ES/10-Lights/01-DiffusedLight/03-Sphere/gradle/libs.versions.toml"
+            line="4"
+            column="16"
+            startOffset="57"
+            endLine="4"
+            endColumn="23"
+            endOffset="64"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.5.1"
+            replacement="3.6.1"/>
+        <location
+            file="$HOME/rtr05-196/01-OpenGL/02-PP/03-Android/02-OpenGL-ES/10-Lights/01-DiffusedLight/03-Sphere/gradle/libs.versions.toml"
+            line="5"
+            column="16"
+            startOffset="80"
+            endLine="5"
+            endColumn="23"
+            endOffset="87"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.0"/>
+        <location
+            file="$HOME/rtr05-196/01-OpenGL/02-PP/03-Android/02-OpenGL-ES/10-Lights/01-DiffusedLight/03-Sphere/gradle/libs.versions.toml"
+            line="6"
+            column="13"
+            startOffset="100"
+            endLine="6"
+            endColumn="20"
+            endOffset="107"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0">
+        <fix-replace
+            description="Change to 1.12.0"
+            family="Update versions"
+            oldString="1.10.0"
+            replacement="1.12.0"/>
+        <location
+            file="$HOME/rtr05-196/01-OpenGL/02-PP/03-Android/02-OpenGL-ES/10-Lights/01-DiffusedLight/03-Sphere/gradle/libs.versions.toml"
+            line="7"
+            column="12"
+            startOffset="119"
+            endLine="7"
+            endColumn="20"
+            endOffset="127"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.application than 8.3.2 is available: 8.5.1">
+        <fix-replace
+            description="Change to 8.5.1"
+            family="Update versions"
+            oldString="8.3.2"
+            replacement="8.5.1"/>
+        <location
+            file="$HOME/rtr05-196/01-OpenGL/02-PP/03-Android/02-OpenGL-ES/10-Lights/01-DiffusedLight/03-Sphere/gradle/libs.versions.toml"
+            line="2"
+            column="7"
+            startOffset="17"
+            endLine="2"
+            endColumn="14"
+            endOffset="24"/>
+    </incident>
+
+</incidents>

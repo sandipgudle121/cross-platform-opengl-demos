@@ -1,0 +1,10 @@
+#include<Windows.h>
+#include "Perspective.h"
+LEAF_ICON ICON leaf_48x48.ico
+MY_KUNDALI_BITMAP BITMAP Kundali.bmp
+
+ 
+
+
+
+

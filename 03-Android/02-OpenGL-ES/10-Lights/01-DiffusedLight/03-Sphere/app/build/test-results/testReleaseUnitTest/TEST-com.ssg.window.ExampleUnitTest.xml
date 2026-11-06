@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ssg.window.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-18T18:39:17" hostname="ASUSF15" time="0.001">
+  <properties/>
+  <testcase name="addition_isCorrect" classname="com.ssg.window.ExampleUnitTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

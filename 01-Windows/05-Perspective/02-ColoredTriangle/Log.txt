@@ -1,0 +1,6 @@
+Program Started Succesfully
+OpenGL Vender : Intel
+OpenGL Renderer : Intel(R) UHD Graphics
+OpenGL Version : 4.6.0 - Build 31.0.101.5333 
+OpenGL Shading language version(GLSL) : 4.60 - Build 31.0.101.5333 
+Program Ended Successfully
